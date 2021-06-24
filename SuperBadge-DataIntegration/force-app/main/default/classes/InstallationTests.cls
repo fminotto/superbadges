@@ -36,7 +36,9 @@ private class InstallationTests {
     
     //Test empty service stub
 	static testmethod void testProjectCalloutServiceForInstall() {
-	    ProjectCalloutService.postOpportunityToPMS();
+        Test.setMock(HttpCalloutMock.class, new ProjectCalloutServiceMock()); 
+        List<id> listId = new List<id>();
+	    ProjectCalloutService.postOpportunityToPMS(listId);
 	}
 
 }
